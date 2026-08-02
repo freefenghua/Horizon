@@ -1,51 +1,46 @@
 {
-  "ai": {
-    "provider": "gemini",
-    "model": "gemini-2.0-flash",
-    "api_key_env": "GEMINI_API_KEY",
-    "temperature": 0.3,
-    "max_tokens": 4096,
-    "throttle_sec": 0,
-    "analysis_concurrency": 1,
-    "enrichment_concurrency": 1
-  },
-  "processing": {
-    "profiles_dir": "profiles",
-    "default_profile": "ai-growth",
-    "profile_settings": {
-      "ai-growth": {
-        "threshold": 7.0,
-        "topic_dedup": true
-      }
-    }
-  },
-  "display": {
-    "icon_style": "emoji"
-  },
   "email": {
-    "enabled": false,
     "smtp_server": "smtp.example.com",
-    "smtp_port": 465,
+    "smtp_port": 587,
     "imap_server": "imap.example.com",
     "imap_port": 993,
-    "email_address": "dummy@example.com",
+    "email_address": "placeholder@example.com",
     "sender_name": "Horizon Daily",
-    "subscribe_keyword": "SUBSCRIBE",
-    "unsubscribe_keyword": "UNSUBSCRIBE"
+    "subscribe_keyword": "subscribe",
+    "unsubscribe_keyword": "unsubscribe"
   },
-  "sources": {
-    "github": [],
-    "hackernews": {
-      "enabled": true,
-      "fetch_top_stories": 30,
-      "min_score": 80,
-      "profile": "ai-growth"
-    },
-    "rss": [
-      {"name": "OpenAI Blog", "url": "https://openai.com/blog/rss.xml", "enabled": true, "category": "ai-news", "profile": "ai-growth"},
-      {"name": "Anthropic", "url": "https://www.anthropic.com/rss.xml", "enabled": true, "category": "ai-news", "profile": "ai-growth"},
-      {"name": "Simon Willison", "url": "https://simonwillison.net/atom/everything/", "enabled": true, "category": "ai-tools", "profile": "ai-growth"},
-      {"name": "Hugging Face Blog", "url": "https://huggingface.co/blog/feed.xml", "enabled": true, "category": "ai-tools", "profile": "ai-growth"},
-      {"name": "GrowthHackers", "url": "https://growthhackers.com/feed", "enabled": true, "category": "growth", "profile": "ai-growth"},
-      {"name": "Lenny's Newsletter", "url": "https://www.lennysnewsletter.com/feed", "enabled": true, "category": "growth", "profile": "ai-growth"},
-      {"name": "Reforge Blog",
+  "sources": [
+    {"name": "OpenAI Blog", "url": "https://openai.com/blog", "type": "rss", "category": "ai"},
+    {"name": "Anthropic", "url": "https://www.anthropic.com/news", "type": "rss", "category": "ai"},
+    {"name": "Simon Willison", "url": "https://simonwillison.net/atom/everything/", "type": "rss", "category": "ai"},
+    {"name": "Hugging Face", "url": "https://huggingface.co/blog/feed.xml", "type": "rss", "category": "ai"},
+    {"name": "GrowthHackers", "url": "https://growthhackers.com/feed", "type": "rss", "category": "growth"},
+    {"name": "Lenny's Newsletter", "url": "https://www.lennysnewsletter.com/feed", "type": "rss", "category": "growth"},
+    {"name": "Reforge", "url": "https://www.reforge.com/blog/rss", "type": "rss", "category": "growth"},
+    {"name": "人人都是产品经理", "url": "https://www.woshipm.com/feed", "type": "rss", "category": "growth"},
+    {"name": "鸟哥笔记", "url": "https://www.niaogebiji.com/feed", "type": "rss", "category": "growth"},
+    {"name": "Reddit GrowthHackers", "url": "https://www.reddit.com/r/growthhackers/.rss", "type": "rss", "category": "growth"},
+    {"name": "Reddit Marketing", "url": "https://www.reddit.com/r/marketing/.rss", "type": "rss", "category": "growth"},
+    {"name": "Hacker News", "url": "https://hnrss.org/frontpage", "type": "rss", "category": "tech"}
+  ],
+  "processing": {
+    "ai_provider": "gemini",
+    "ai_model": "gemini-2.0-flash",
+    "ai_threshold": 7.0,
+    "max_items": 5
+  },
+  "output": {
+    "format": "markdown",
+    "directory": "output",
+    "filename_pattern": "daily-{date}.md"
+  },
+  "profiles": [
+    {
+      "name": "ai-growth",
+      "description": "AI × 用户增长精选案例",
+      "filter_categories": ["ai", "growth"],
+      "ai_threshold": 7.0,
+      "max_items": 5
+    }
+  ]
+}
