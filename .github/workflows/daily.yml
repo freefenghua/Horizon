@@ -5,32 +5,37 @@ on:
     - cron: '0 0 * * *'
   workflow_dispatch:
 
+env:
+  GOOGLE_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+
 jobs:
   horizon:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.12'
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
 
       - name: Install dependencies
-        run: |
-          pip install uv
-          uv sync
+        run: uv sync
 
       - name: Run Horizon
-        run: |
-          uv run horizon --hours 24
-        env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: uv run horizon --hours 24
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs
-          publish_branch: gh-pages
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git stash || true
+          git checkout gh-pages || git checkout -b gh-pages
+          cp -f data/summaries/*.md docs/ 2>/dev/null || true
+          git add docs/
+          git diff --staged --quiet || git commit -m "Update daily digest"
+          git push origin gh-pages || git push -u origin gh-pages
