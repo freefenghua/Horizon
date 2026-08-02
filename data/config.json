@@ -7,46 +7,40 @@
   },
   "sources": {
     "rss": [
-      {
-        "name": "OpenAI Blog",
-        "url": "https://openai.com/blog/rss.xml",
-        "category": "ai",
-        "profile": "tech-news"
-      },
-      {
-        "name": "Anthropic",
-        "url": "https://www.anthropic.com/rss.xml",
-        "category": "ai",
-        "profile": "tech-news"
-      },
-      {
-        "name": "Simon Willison",
-        "url": "https://simonwillison.net/atom/everything/",
-        "category": "ai",
-        "profile": "tech-news"
-      },
-      {
-        "name": "Hugging Face Blog",
-        "url": "https://huggingface.co/blog/feed.xml",
-        "category": "ai",
-        "profile": "tech-news"
-      },
-      {
-        "name": "GrowthHackers",
-        "url": "https://growthhackers.com/feed",
-        "category": "growth",
-        "profile": "tech-news"
-      },
-      {
-        "name": "Lenny's Newsletter",
-        "url": "https://www.lennysnewsletter.com/feed",
-        "category": "growth",
-        "profile": "tech-news"
-      },
-      {
-        "name": "Reforge",
-        "url": "https://www.reforge.com/blog/rss",
-        "category": "growth",
-        "profile": "tech-news"
-      },
-      {
+      {"name": "OpenAI Blog", "url": "https://openai.com/blog/rss.xml", "category": "ai", "profile": "tech-news"},
+      {"name": "Anthropic", "url": "https://www.anthropic.com/rss.xml", "category": "ai", "profile": "tech-news"},
+      {"name": "Simon Willison", "url": "https://simonwillison.net/atom/everything/", "category": "ai", "profile": "tech-news"},
+      {"name": "Hugging Face Blog", "url": "https://huggingface.co/blog/feed.xml", "category": "ai", "profile": "tech-news"},
+      {"name": "GrowthHackers", "url": "https://growthhackers.com/feed", "category": "growth", "profile": "tech-news"},
+      {"name": "Lenny's Newsletter", "url": "https://www.lennysnewsletter.com/feed", "category": "growth", "profile": "tech-news"},
+      {"name": "Reforge", "url": "https://www.reforge.com/blog/rss", "category": "growth", "profile": "tech-news"},
+      {"name": "人人都是产品经理", "url": "https://www.woshipm.com/feed", "category": "growth", "profile": "tech-news"},
+      {"name": "鸟哥笔记", "url": "https://www.niaogebiji.com/feed", "category": "growth", "profile": "tech-news"}
+    ],
+    "reddit": {
+      "enabled": true,
+      "subreddits": [
+        {"subreddit": "growthhackers", "sort": "hot", "time_filter": "day", "fetch_limit": 15, "profile": "tech-news"},
+        {"subreddit": "marketing", "sort": "hot", "time_filter": "day", "fetch_limit": 15, "profile": "tech-news"}
+      ],
+      "fetch_comments": 5
+    },
+    "hackernews": {
+      "enabled": true,
+      "fetch_top_stories": 30,
+      "min_score": 100,
+      "profile": "tech-news"
+    }
+  },
+  "processing": {
+    "profiles_dir": "profiles",
+    "default_profile": "tech-news",
+    "profile_settings": {
+      "tech-news": {"threshold": 7.0, "topic_dedup": true},
+      "finance-news": {"threshold": 7.0, "topic_dedup": true},
+      "tech-blog": {"threshold": 7.0, "topic_dedup": false}
+    }
+  },
+  "collection": {"time_window_hours": 24},
+  "digest": {"max_items": 5, "profile_order": ["tech-news", "finance-news", "tech-blog"]}
+}
