@@ -1,46 +1,109 @@
 {
-  "email": {
-    "smtp_server": "smtp.example.com",
-    "smtp_port": 587,
-    "imap_server": "imap.example.com",
-    "imap_port": 993,
-    "email_address": "placeholder@example.com",
-    "sender_name": "Horizon Daily",
-    "subscribe_keyword": "subscribe",
-    "unsubscribe_keyword": "unsubscribe"
+  "ai": {
+    "provider": "gemini",
+    "model": "gemini-2.0-flash",
+    "api_key_env": "GOOGLE_API_KEY",
+    "languages": ["zh", "en"]
   },
-  "sources": [
-    {"name": "OpenAI Blog", "url": "https://openai.com/blog", "type": "rss", "category": "ai"},
-    {"name": "Anthropic", "url": "https://www.anthropic.com/news", "type": "rss", "category": "ai"},
-    {"name": "Simon Willison", "url": "https://simonwillison.net/atom/everything/", "type": "rss", "category": "ai"},
-    {"name": "Hugging Face", "url": "https://huggingface.co/blog/feed.xml", "type": "rss", "category": "ai"},
-    {"name": "GrowthHackers", "url": "https://growthhackers.com/feed", "type": "rss", "category": "growth"},
-    {"name": "Lenny's Newsletter", "url": "https://www.lennysnewsletter.com/feed", "type": "rss", "category": "growth"},
-    {"name": "Reforge", "url": "https://www.reforge.com/blog/rss", "type": "rss", "category": "growth"},
-    {"name": "人人都是产品经理", "url": "https://www.woshipm.com/feed", "type": "rss", "category": "growth"},
-    {"name": "鸟哥笔记", "url": "https://www.niaogebiji.com/feed", "type": "rss", "category": "growth"},
-    {"name": "Reddit GrowthHackers", "url": "https://www.reddit.com/r/growthhackers/.rss", "type": "rss", "category": "growth"},
-    {"name": "Reddit Marketing", "url": "https://www.reddit.com/r/marketing/.rss", "type": "rss", "category": "growth"},
-    {"name": "Hacker News", "url": "https://hnrss.org/frontpage", "type": "rss", "category": "tech"}
-  ],
-  "processing": {
-    "ai_provider": "gemini",
-    "ai_model": "gemini-2.0-flash",
-    "ai_threshold": 7.0,
-    "max_items": 5
-  },
-  "output": {
-    "format": "markdown",
-    "directory": "output",
-    "filename_pattern": "daily-{date}.md"
-  },
-  "profiles": [
-    {
-      "name": "ai-growth",
-      "description": "AI × 用户增长精选案例",
-      "filter_categories": ["ai", "growth"],
-      "ai_threshold": 7.0,
-      "max_items": 5
+  "sources": {
+    "rss": [
+      {
+        "name": "OpenAI Blog",
+        "url": "https://openai.com/blog/rss.xml",
+        "category": "ai",
+        "profile": "tech-news"
+      },
+      {
+        "name": "Anthropic",
+        "url": "https://www.anthropic.com/rss.xml",
+        "category": "ai",
+        "profile": "tech-news"
+      },
+      {
+        "name": "Simon Willison",
+        "url": "https://simonwillison.net/atom/everything/",
+        "category": "ai",
+        "profile": "tech-news"
+      },
+      {
+        "name": "Hugging Face Blog",
+        "url": "https://huggingface.co/blog/feed.xml",
+        "category": "ai",
+        "profile": "tech-news"
+      },
+      {
+        "name": "GrowthHackers",
+        "url": "https://growthhackers.com/feed",
+        "category": "growth",
+        "profile": "tech-news"
+      },
+      {
+        "name": "Lenny's Newsletter",
+        "url": "https://www.lennysnewsletter.com/feed",
+        "category": "growth",
+        "profile": "tech-news"
+      },
+      {
+        "name": "Reforge",
+        "url": "https://www.reforge.com/blog/rss",
+        "category": "growth",
+        "profile": "tech-news"
+      },
+      {
+        "name": "人人都是产品经理",
+        "url": "https://www.woshipm.com/feed",
+        "category": "growth",
+        "profile": "tech-news"
+      },
+      {
+        "name": "鸟哥笔记",
+        "url": "https://www.niaogebiji.com/feed",
+        "category": "growth",
+        "profile": "tech-news"
+      }
+    ],
+    "reddit": {
+      "enabled": true,
+      "subreddits": [
+        {
+          "subreddit": "growthhackers",
+          "sort": "hot",
+          "time_filter": "day",
+          "fetch_limit": 15,
+          "profile": "tech-news"
+        },
+        {
+          "subreddit": "marketing",
+          "sort": "hot",
+          "time_filter": "day",
+          "fetch_limit": 15,
+          "profile": "tech-news"
+        }
+      ],
+      "fetch_comments": 5
+    },
+    "hackernews": {
+      "enabled": true,
+      "fetch_top_stories": 30,
+      "min_score": 100,
+      "profile": "tech-news"
     }
-  ]
+  },
+  "processing": {
+    "profiles_dir": "profiles",
+    "default_profile": "tech-news",
+    "profile_settings": {
+      "tech-news": {
+        "threshold": 7.0,
+        "topic_dedup": true
+      }
+    }
+  },
+  "collection": {
+    "time_window_hours": 24
+  },
+  "digest": {
+    "max_items": 5,
+    "profile_order": ["tech-news"]
+  }
 }
