@@ -36,9 +36,11 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git stash || true
-          git checkout gh-pages || git checkout -b gh-pages
+          git checkout --orphan gh-pages
+          git rm -rf . 2>/dev/null || true
+          git clean -fdx
+          mkdir -p docs
           cp -f data/summaries/*.md docs/ 2>/dev/null || true
           git add docs/
-          git diff --staged --quiet || git commit -m "Update daily digest"
-          git push origin gh-pages || git push -u origin gh-pages
+          git commit -m "Update daily digest"
+          git push -f origin gh-pages
