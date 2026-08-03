@@ -8,6 +8,9 @@ on:
 env:
   GOOGLE_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
+permissions:
+  contents: write
+
 jobs:
   horizon:
     runs-on: ubuntu-latest
