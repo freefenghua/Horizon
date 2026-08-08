@@ -46,11 +46,11 @@
     "profiles_dir": "profiles",
     "default_profile": "tech-news",
     "profile_settings": {
-      "tech-news": {"threshold": 5.5, "topic_dedup": true},
-      "finance-news": {"threshold": 5.5, "topic_dedup": true},
-      "tech-blog": {"threshold": 5.5, "topic_dedup": false}
+      "tech-news": {"threshold": 3.5, "topic_dedup": true},
+      "finance-news": {"threshold": 3.5, "topic_dedup": true},
+      "tech-blog": {"threshold": 3.5, "topic_dedup": false}
     }
   },
-  "collection": {"time_window_hours": 24},
+  "collection": {"time_window_hours": 48},
   "digest": {"max_items": 5, "profile_order": ["tech-news", "finance-news", "tech-blog"]}
 }
