@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: uv sync
       - name: Run Horizon
-        run: uv run horizon --hours 24
+        run: uv run horizon --hours 48
       - name: Push docs to docs-output branch
         if: success()
         run: |
