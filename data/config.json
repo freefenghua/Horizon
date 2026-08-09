@@ -7,50 +7,48 @@
   },
   "sources": {
     "rss": [
-      {"name": "Simon Willison", "url": "https://simonwillison.net/atom/everything/", "category": "ai", "profile": "tech-news"},
-      {"name": "Interconnects", "url": "https://www.interconnects.ai/feed", "category": "ai", "profile": "tech-news"},
-      {"name": "Hugging Face Blog", "url": "https://huggingface.co/blog/feed.xml", "category": "ai", "profile": "tech-news"},
-      {"name": "Teng Li", "url": "https://tengli.dev/feed.xml", "category": "ai", "profile": "tech-news"},
-      {"name": "Latent Space", "url": "https://www.latent.space/feed", "category": "ai", "profile": "tech-news"},
-      {"name": "Hamel Husain", "url": "https://hamel.dev/index.xml", "category": "ai", "profile": "tech-news"},
-      {"name": "Claude Code Releases", "url": "https://github.com/anthropics/claude-code/releases.atom", "category": "ai", "profile": "tech-news"},
-      {"name": "Claude Cookbooks", "url": "https://github.com/anthropics/claude-cookbooks/commits/main.atom", "category": "ai", "profile": "tech-news"},
-      {"name": "Awesome Claude Code", "url": "https://github.com/hesreallyhim/awesome-claude-code/commits/main.atom", "category": "ai", "profile": "tech-news"},
-      {"name": "MCP Servers", "url": "https://github.com/modelcontextprotocol/servers/releases.atom", "category": "ai", "profile": "tech-news"},
-      {"name": "One Useful Thing", "url": "https://www.oneusefulthing.org/feed", "category": "ai", "profile": "tech-news"},
-      {"name": "Eugene Yan", "url": "https://eugeneyan.com/rss/", "category": "ai", "profile": "tech-news"},
-      {"name": "Karpathy", "url": "https://karpathy.bearblog.dev/feed/?type=rss", "category": "ai", "profile": "tech-news"},
-      {"name": "LangChain Blog", "url": "https://blog.langchain.dev/rss/", "category": "ai", "profile": "tech-news"},
-      {"name": "GrowthHackers", "url": "https://growthhackers.com/feed", "category": "growth", "profile": "tech-news"},
-      {"name": "Lenny's Newsletter", "url": "https://www.lennysnewsletter.com/feed", "category": "growth", "profile": "tech-news"},
-      {"name": "Reforge", "url": "https://www.reforge.com/blog/rss", "category": "growth", "profile": "tech-news"},
-      {"name": "人人都是产品经理", "url": "https://www.woshipm.com/feed", "category": "growth", "profile": "tech-news"},
-      {"name": "鸟哥笔记", "url": "https://www.niaogebiji.com/feed", "category": "growth", "profile": "tech-news"}
+      {"name": "Simon Willison", "url": "https://simonwillison.net/atom/everything/", "category": "ai", "profile": "ai-growth"},
+      {"name": "Interconnects", "url": "https://www.interconnects.ai/feed", "category": "ai", "profile": "ai-growth"},
+      {"name": "Hugging Face Blog", "url": "https://huggingface.co/blog/feed.xml", "category": "ai", "profile": "ai-growth"},
+      {"name": "Teng Li", "url": "https://tengli.dev/feed.xml", "category": "ai", "profile": "ai-growth"},
+      {"name": "Latent Space", "url": "https://www.latent.space/feed", "category": "ai", "profile": "ai-growth"},
+      {"name": "Hamel Husain", "url": "https://hamel.dev/index.xml", "category": "ai", "profile": "ai-growth"},
+      {"name": "Claude Code Releases", "url": "https://github.com/anthropics/claude-code/releases.atom", "category": "ai", "profile": "ai-growth"},
+      {"name": "Claude Cookbooks", "url": "https://github.com/anthropics/claude-cookbooks/commits/main.atom", "category": "ai", "profile": "ai-growth"},
+      {"name": "Awesome Claude Code", "url": "https://github.com/hesreallyhim/awesome-claude-code/commits/main.atom", "category": "ai", "profile": "ai-growth"},
+      {"name": "MCP Servers", "url": "https://github.com/modelcontextprotocol/servers/releases.atom", "category": "ai", "profile": "ai-growth"},
+      {"name": "One Useful Thing", "url": "https://www.oneusefulthing.org/feed", "category": "ai", "profile": "ai-growth"},
+      {"name": "Eugene Yan", "url": "https://eugeneyan.com/rss/", "category": "ai", "profile": "ai-growth"},
+      {"name": "Karpathy", "url": "https://karpathy.bearblog.dev/feed/?type=rss", "category": "ai", "profile": "ai-growth"},
+      {"name": "LangChain Blog", "url": "https://blog.langchain.dev/rss/", "category": "ai", "profile": "ai-growth"},
+      {"name": "GrowthHackers", "url": "https://growthhackers.com/feed", "category": "growth", "profile": "ai-growth"},
+      {"name": "Lenny's Newsletter", "url": "https://www.lennysnewsletter.com/feed", "category": "growth", "profile": "ai-growth"},
+      {"name": "Reforge", "url": "https://www.reforge.com/blog/rss", "category": "growth", "profile": "ai-growth"},
+      {"name": "人人都是产品经理", "url": "https://www.woshipm.com/feed", "category": "growth", "profile": "ai-growth"},
+      {"name": "鸟哥笔记", "url": "https://www.niaogebiji.com/feed", "category": "growth", "profile": "ai-growth"}
     ],
     "reddit": {
       "enabled": true,
       "subreddits": [
-        {"subreddit": "growthhackers", "sort": "hot", "time_filter": "day", "fetch_limit": 15, "profile": "tech-news"},
-        {"subreddit": "marketing", "sort": "hot", "time_filter": "day", "fetch_limit": 15, "profile": "tech-news"}
+        {"subreddit": "growthhackers", "sort": "hot", "time_filter": "day", "fetch_limit": 15, "profile": "ai-growth"},
+        {"subreddit": "marketing", "sort": "hot", "time_filter": "day", "fetch_limit": 15, "profile": "ai-growth"}
       ],
       "fetch_comments": 5
     },
     "hackernews": {
       "enabled": true,
       "fetch_top_stories": 30,
-      "min_score": 100,
-      "profile": "tech-news"
+      "min_score": 80,
+      "profile": "ai-growth"
     }
   },
   "processing": {
     "profiles_dir": "profiles",
-    "default_profile": "tech-news",
+    "default_profile": "ai-growth",
     "profile_settings": {
-      "tech-news": {"threshold": 3.5, "topic_dedup": true},
-      "finance-news": {"threshold": 3.5, "topic_dedup": true},
-      "tech-blog": {"threshold": 3.5, "topic_dedup": false}
+      "ai-growth": {"threshold": 3.5, "topic_dedup": true}
     }
   },
   "collection": {"time_window_hours": 48},
-  "digest": {"max_items": 5, "profile_order": ["tech-news", "finance-news", "tech-blog"]}
+  "digest": {"max_items": 5, "profile_order": ["ai-growth"]}
 }

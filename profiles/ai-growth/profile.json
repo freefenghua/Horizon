@@ -1,0 +1,38 @@
+{
+  "id": "ai-growth",
+  "name": "AI × Growth Intersection",
+  "display_names": {
+    "zh": "AI×增长交叉领域"
+  },
+  "match": "match.md",
+  "analysis": "analysis.md",
+  "enrichment": {
+    "prompt": "enrichment.md",
+    "blocks": [
+      {
+        "id": "summary",
+        "type": "section",
+        "tools": [],
+        "primary": true
+      },
+      {
+        "id": "ai_technique",
+        "type": "section",
+        "tools": ["web_search"],
+        "optional": true
+      },
+      {
+        "id": "growth_impact",
+        "type": "section",
+        "tools": ["web_search"],
+        "optional": true
+      },
+      {
+        "id": "takeaway",
+        "type": "section",
+        "tools": [],
+        "optional": true
+      }
+    ]
+  }
+}
