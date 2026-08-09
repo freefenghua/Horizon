@@ -5,6 +5,7 @@ on:
   workflow_dispatch:
 env:
   GOOGLE_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+  DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
 permissions:
   contents: write
 jobs:
