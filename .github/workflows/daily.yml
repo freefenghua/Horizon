@@ -12,7 +12,10 @@ jobs:
   horizon:
     runs-on: ubuntu-latest
     steps:
+      # 基于 docs-output 检出，保证历史日报逐日追加而不被覆盖
       - uses: actions/checkout@v4
+        with:
+          ref: docs-output
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -32,16 +35,5 @@ jobs:
           cp -f data/summaries/*.md docs/
           git add docs/
           git diff --staged --quiet || git commit -m "Update daily digest"
-          git push origin HEAD:docs-output --force
-      - name: Sync to Obsidian digest repo
-        if: success()
-        run: |
-          TODAY=$(date +%Y-%m-%d)
-          git clone https://x-access-token:${{ secrets.CROSS_REPO_TOKEN }}@github.com/freefenghua/horizon-digest.git /tmp/digest
-          cp data/summaries/horizon-${TODAY}-zh.md /tmp/digest/
-          cd /tmp/digest
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add .
-          git diff --staged --quiet || git commit -m "${TODAY} 日报"
-          git push
+          # 正常追加提交，禁止 force push，避免清空历史日报
+          git push origin HEAD:docs-output
