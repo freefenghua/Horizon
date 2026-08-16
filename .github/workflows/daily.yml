@@ -6,6 +6,7 @@ on:
 env:
   GOOGLE_API_KEY: ${{ secrets.GEMINI_API_KEY }}
   DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+  SERVERCHAN_SENDKEY: ${{ secrets.SERVERCHAN_SENDKEY }}
 permissions:
   contents: write
 jobs:
@@ -39,3 +40,6 @@ jobs:
           git diff --staged --quiet || git commit -m "Update daily digest"
           # 正常追加提交，禁止 force push，避免清空历史日报
           git push origin HEAD:docs-output
+      - name: Notify WeChat via ServerChan
+        if: success()
+        run: python3 scripts/notify_serverchan.py
