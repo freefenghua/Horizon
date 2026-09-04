@@ -9,6 +9,7 @@ title: AI×增长每日日报
 
 | 日期 | 中文日报 | English |
 |------|----------|---------|
+| 2026-09-04 | [horizon-2026-09-04-zh.md](horizon-2026-09-04-zh.md) | [horizon-2026-09-04-en.md](horizon-2026-09-04-en.md) |
 | 2026-09-03 | [horizon-2026-09-03-zh.md](horizon-2026-09-03-zh.md) | [horizon-2026-09-03-en.md](horizon-2026-09-03-en.md) |
 | 2026-09-02 | [horizon-2026-09-02-zh.md](horizon-2026-09-02-zh.md) | [horizon-2026-09-02-en.md](horizon-2026-09-02-en.md) |
 | 2026-09-01 | [horizon-2026-09-01-zh.md](horizon-2026-09-01-zh.md) | [horizon-2026-09-01-en.md](horizon-2026-09-01-en.md) |
