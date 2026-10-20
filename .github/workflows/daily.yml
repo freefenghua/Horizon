@@ -13,10 +13,13 @@ jobs:
   horizon:
     runs-on: ubuntu-latest
     steps:
-      # 基于 docs-output 检出，保证历史日报逐日追加而不被覆盖
+      # 代码与配置取自 main，修改 config / profile 后次日即生效
+      - uses: actions/checkout@v4
+      # docs-output 单独检出到 _site/，保证历史日报逐日追加而不被覆盖
       - uses: actions/checkout@v4
         with:
           ref: docs-output
+          path: _site
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -29,11 +32,12 @@ jobs:
         run: uv run horizon --hours 48
       - name: Push docs to docs-output branch
         if: success()
+        working-directory: _site
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           mkdir -p docs
-          cp -f data/summaries/*.md docs/
+          cp -f ../data/summaries/*.md docs/
           # 重新生成日报存档目录页（GitHub Pages 首页）
           python3 scripts/gen_index.py
           git add docs/
