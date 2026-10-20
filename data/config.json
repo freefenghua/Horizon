@@ -24,11 +24,14 @@
       {"name": "GrowthHackers", "url": "https://growthhackers.com/feed", "category": "growth", "profile": "ai-growth"},
       {"name": "Lenny's Newsletter", "url": "https://www.lennysnewsletter.com/feed", "category": "growth", "profile": "ai-growth"},
       {"name": "Reforge", "url": "https://www.reforge.com/blog/rss", "category": "growth", "profile": "ai-growth"},
-      {"name": "人人都是产品经理", "url": "https://www.woshipm.com/feed", "category": "growth", "profile": "ai-growth"},
-      {"name": "鸟哥笔记", "url": "https://www.niaogebiji.com/feed", "category": "growth", "profile": "ai-growth"}
+      {"name": "人人都是产品经理", "url": "https://www.woshipm.com/feed", "category": "woshipm", "profile": "ai-growth"},
+      {"name": "鸟哥笔记", "url": "https://www.niaogebiji.com/feed", "category": "growth", "profile": "ai-growth"},
+      {"name": "Growth Unhinged", "url": "https://www.growthunhinged.com/feed", "category": "growth", "profile": "ai-growth"},
+      {"name": "Elena Verna", "url": "https://www.elenaverna.com/feed", "category": "growth", "profile": "ai-growth"},
+      {"name": "Andrew Chen", "url": "https://andrewchen.substack.com/feed", "category": "growth", "profile": "ai-growth"}
     ],
     "reddit": {
-      "enabled": true,
+      "enabled": false,
       "subreddits": [
         {"subreddit": "growthhackers", "sort": "hot", "time_filter": "day", "fetch_limit": 15, "profile": "ai-growth"},
         {"subreddit": "marketing", "sort": "hot", "time_filter": "day", "fetch_limit": 15, "profile": "ai-growth"}
@@ -46,9 +49,15 @@
     "profiles_dir": "profiles",
     "default_profile": "ai-growth",
     "profile_settings": {
-      "ai-growth": {"threshold": 3.5, "topic_dedup": true}
+      "ai-growth": {"threshold": 5.0, "topic_dedup": true}
     }
   },
   "collection": {"time_window_hours": 48},
-  "digest": {"max_items": 5, "profile_order": ["ai-growth"]}
+  "digest": {
+    "max_items": 5,
+    "category_groups": {
+      "woshipm": {"name": "人人都是产品经理", "limit": 2, "categories": ["woshipm"]}
+    },
+    "profile_order": ["ai-growth"]
+  }
 }
